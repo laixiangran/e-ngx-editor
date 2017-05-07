@@ -1,6 +1,6 @@
 import {Component, OnInit, OnDestroy, ElementRef, Self, Input, Output, EventEmitter} from '@angular/core';
 import {ControlValueAccessor, NgModel} from "@angular/forms";
-import _ from "lodash";
+import * as _ from "lodash";
 
 declare var UE: any;
 

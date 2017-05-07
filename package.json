@@ -1,64 +1,65 @@
 {
-	"name": "essence-ng2-editor",
-	"version": "1.0.0",
-	"description": "essence-ng2-editor is a editor component for Angular.",
-	"keywords": [
-		"angular2",
-		"UEditor",
-		"laixiangran"
-	],
-	"homepage": "https://github.com/laixiangran/essence-ng2-editor#readme",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/laixiangran/essence-ng2-editor.git"
-	},
-	"author": {
-		"name": "赖祥燃",
-		"email": "laixiangran@163.com",
-		"bolg": "http://www.cnblogs.com/laixiangran",
-		"homepage": "http://www.laixiangran.cn"
-	},
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/laixiangran/essence-ng2-editor/issues"
-	},
-	"scripts": {
-		"prepublish": "gulp prepublish && ngc",
-		"start": "npm run jit",
-		"jit": "ng serve -o",
-		"aot": "ng serve -o --aot",
-		"build": "npm run build-test",
-		"build-test": "ng build --prod --env=test --aot",
-		"build-prod": "ng build --prod --env=prod --aot"
-	},
-	"module": "dist/index.js",
-	"typings": "dist/index.d.ts",
-	"dependencies": {
-		"lodash": "^4.17.4"
-	},
-	"devDependencies": {
-		"@angular/cli": "1.0.0",
-		"@angular/common": "^2.4.8",
-		"@angular/compiler": "^2.4.8",
-		"@angular/compiler-cli": "^2.4.8",
-		"@angular/core": "^2.4.8",
-		"@angular/forms": "^2.4.8",
-		"@angular/http": "^2.4.8",
-		"@angular/platform-browser": "^2.4.8",
-		"@angular/platform-browser-dynamic": "^2.4.8",
-		"@angular/router": "^3.4.8",
-		"@types/node": "^6.0.60",
-		"core-js": "^2.4.1",
-		"del": "^2.2.2",
-		"gulp": "^3.9.1",
-		"gulp-clean": "^0.3.2",
-		"gulp-if": "^2.0.2",
-		"gulp-inline-ng2-template": "^4.0.0",
-		"gulp-rename": "^1.2.2",
-		"gulp-sass": "^3.1.0",
-		"run-sequence": "^1.2.2",
-		"rxjs": "^5.0.1",
-		"typescript": "^2.2.0",
-		"zone.js": "^0.7.2"
-	}
+  "name": "essence-ng2-editor",
+  "version": "1.0.1",
+  "description": "essence-ng2-editor is a editor component for Angular.",
+  "keywords": [
+    "angular2",
+    "UEditor",
+    "laixiangran"
+  ],
+  "homepage": "https://github.com/laixiangran/essence-ng2-editor#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/laixiangran/essence-ng2-editor.git"
+  },
+  "author": {
+    "name": "赖祥燃",
+    "email": "laixiangran@163.com",
+    "bolg": "http://www.cnblogs.com/laixiangran",
+    "homepage": "http://www.laixiangran.cn"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/laixiangran/essence-ng2-editor/issues"
+  },
+  "scripts": {
+    "prepublish": "gulp prepublish && ngc",
+    "start": "npm run jit",
+    "jit": "ng serve -o",
+    "aot": "ng serve -o --aot",
+    "build": "npm run build-test",
+    "build-test": "ng build --prod --env=test --aot",
+    "build-prod": "ng build --prod --env=prod --aot"
+  },
+  "module": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "dependencies": {
+    "@types/lodash": "^4.14.64",
+    "lodash": "^4.17.4"
+  },
+  "devDependencies": {
+    "@angular/cli": "1.0.0",
+    "@angular/common": "^2.4.8",
+    "@angular/compiler": "^2.4.8",
+    "@angular/compiler-cli": "^2.4.8",
+    "@angular/core": "^2.4.8",
+    "@angular/forms": "^2.4.8",
+    "@angular/http": "^2.4.8",
+    "@angular/platform-browser": "^2.4.8",
+    "@angular/platform-browser-dynamic": "^2.4.8",
+    "@angular/router": "^3.4.8",
+    "@types/node": "^6.0.60",
+    "core-js": "^2.4.1",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-if": "^2.0.2",
+    "gulp-inline-ng2-template": "^4.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "run-sequence": "^1.2.2",
+    "rxjs": "^5.0.1",
+    "typescript": "^2.2.0",
+    "zone.js": "^0.7.2"
+  }
 }
