@@ -1,0 +1,15 @@
+<div class="app_main">
+	<h1>editor Component for Angular2</h1>
+	<div>
+		<essence-ng2-editor #editor id="editor" [(ngModel)]="model_text"
+							(contentChange)="contentChange($event)"
+							(ready)="editorReady($event)"
+							(click)="test(editor.text)">
+		</essence-ng2-editor>
+	</div>
+	<h2>常用API</h2>
+	<div>
+		<button (click)="setContent()">修改内容</button>
+		<button (click)="setHeight(200)">设置编辑器的高度</button>
+	</div>
+</div>
