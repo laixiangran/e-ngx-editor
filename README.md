@@ -2,7 +2,7 @@
 
 essence-ng2-editor is a editor component for Angular.
 
-依赖第三方插件：[UEditor](http://ueditor.baidu.com/website/index.html)
+依赖的第三方插件：[UEditor](http://ueditor.baidu.com/website/index.html)
 
 ## Usage
 
