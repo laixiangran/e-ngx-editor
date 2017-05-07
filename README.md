@@ -119,6 +119,34 @@ essence-ng2-editor is a editor component for Angular.
 - `setContent (html: string, isAppendTo: boolean = false): void` - 设置编辑器的内容，可修改编辑器当前的html内容
 	- html 要插入的html内容
     - 若传入true，不清空原来的内容，在最后插入内容，否则，清空内容再插入
+    
+- `getContent (): any` - 获取编辑器html内容
+
+- `getContentTxt (): any` - 获取编辑器纯文本内容
+
+- `getPlainTxt (): any` - 获取编辑器带格式的纯文本内容
+
+- `hasContents (): boolean` - 判断编辑器是否有内容
+
+- `focus (): void` - 让编辑器获得焦点
+
+- `blur (): void` - 让编辑器失去焦点
+
+- `isFocus (): boolean` - 判断编辑器是否获得焦点
+
+- `setDisabled (): void` - 设置当前编辑区域不可编辑
+
+- `setEnabled (): void` - 设置当前编辑区域可以编辑
+
+- `setHide (): void` - 隐藏编辑器
+
+- `setShow (): void` - 显示编辑器
+
+- `getSelectionText (): string` - 获得当前选中的文本
+
+- `executeCommand (command: string, content?: string)` - 执行指定命令
+	- command 执行的命令
+    - content 执行要操作的内容
 
 ## Develop
 

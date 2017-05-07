@@ -251,7 +251,7 @@ export class EssenceNg2EditorComponent implements ControlValueAccessor, OnInit, 
 	/**
 	 * 判断编辑器是否有内容
 	 */
-	hasContents (): any {
+	hasContents (): boolean {
 		return this.ue && this.ue.hasContents();
 	}
 
@@ -272,7 +272,7 @@ export class EssenceNg2EditorComponent implements ControlValueAccessor, OnInit, 
 	/**
 	 * 判断编辑器是否获得焦点
 	 */
-	isFocus (): any {
+	isFocus (): boolean {
 		return this.ue && this.ue.isFocus();
 	}
 
@@ -307,12 +307,12 @@ export class EssenceNg2EditorComponent implements ControlValueAccessor, OnInit, 
 	/**
 	 * 获得当前选中的文本
 	 */
-	getSelectionText (): any {
+	getSelectionText (): string {
 		return this.ue && this.ue.selection.getText();
 	}
 
 	/**
-	 * 执行命令
+	 * 执行指定命令
 	 * @param command
 	 * @param content
 	 */
