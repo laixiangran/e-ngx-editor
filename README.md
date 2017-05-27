@@ -17,6 +17,7 @@ essence-ng2-editor is a editor component for Angular.
 	```html
 	<script src="./assets/scripts/ueditor/ueditor.config.js"></script>
 	<script src="./assets/scripts/ueditor/ueditor.all.min.js"></script>
+	<script src="./assets/scripts/ueditor/lang/zh-cn/zh-cn.js"></script>
 	```
 
 3. Add the EssenceNg2EditorModule
