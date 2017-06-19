@@ -1,6 +1,6 @@
 {
 	"name": "essence-ng2-editor",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "essence-ng2-editor is a editor component for Angular.",
 	"keywords": [
 		"angular2",
@@ -57,6 +57,8 @@
 		"gulp-inline-ng2-template": "^4.0.0",
 		"gulp-rename": "^1.2.2",
 		"gulp-sass": "^3.1.0",
-		"run-sequence": "^1.2.2"
+		"run-sequence": "^1.2.2",
+		"tslint": "^5.3.2",
+		"tslint-eslint-rules": "^4.1.1"
 	}
 }

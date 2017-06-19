@@ -126,7 +126,7 @@ export class EssenceNg2EditorComponent implements ControlValueAccessor, OnInit, 
             console.warn("编辑器容器最好设置id！");
         }
         this.text = this.cd.value;
-        let con: any = _.assign({}, this.defaultConfig, this.config);
+        let con: any = _.merge({}, this.defaultConfig, this.config);
         this.ue = UE.getEditor(this.elementRef.nativeElement.id, con);
 
         // 注册事件
