@@ -13,7 +13,7 @@
 			"tsconfig": "tsconfig.json",
 			"prefix": "",
 			"styles": [
-				"./index.css"
+				"./styles.scss"
 			],
 			"scripts": [],
 			"environmentSource": "environments/environment.ts",
