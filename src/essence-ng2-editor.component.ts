@@ -21,7 +21,7 @@ export class EssenceNg2EditorComponent implements ControlValueAccessor, OnInit, 
     elementRef: ElementRef;
     config: any;
     isReady: boolean = false;
-	editorChange: any = (_: any) => {};
+	editorChange: any = Function.prototype;
     defaultConfig: any = {
         autoHeightEnabled: true,
         allowDivTransToP: false,
