@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ElementRef, Input, Output, EventEmitter, forwardRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, Input, Output, EventEmitter, forwardRef, Renderer2 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import * as _ from "lodash";
 
@@ -130,8 +130,9 @@ export class EssenceNg2EditorComponent implements ControlValueAccessor, OnInit, 
     @Output()
     contentChange: EventEmitter<any> = new EventEmitter<any>(false);
 
-    constructor(elementRef: ElementRef) {
+    constructor(elementRef: ElementRef, render: Renderer2) {
         this.elementRef = elementRef;
+        render.listen(this.elementRef.nativeElement, "click", () => {});
     }
 
     ngOnInit() {
@@ -199,8 +200,7 @@ export class EssenceNg2EditorComponent implements ControlValueAccessor, OnInit, 
         });
 
         this.ue.addListener('selectionchange', (editor: any) => {
-			this.editor_text = this.getContent();
-			this.editorChange(this.editor_text);
+			this.viewAndModelChange();
 			this.selectionchange.emit(this);
         });
 
@@ -213,8 +213,7 @@ export class EssenceNg2EditorComponent implements ControlValueAccessor, OnInit, 
         });
 
         this.ue.addListener('contentChange', () => {
-			this.editor_text = this.getContent();
-			this.editorChange(this.editor_text);
+			this.viewAndModelChange();
 			this.contentChange.emit(this.editor_text);
         });
     }
@@ -223,6 +222,15 @@ export class EssenceNg2EditorComponent implements ControlValueAccessor, OnInit, 
         this.ue && this.ue.destroy();
         this.ue = null;
     }
+
+	/**
+	 * 更新视图和模型及有关值
+	 */
+	viewAndModelChange() {
+		this.editor_text = this.getContent();
+		this.editorChange(this.editor_text); // 更新ngModel
+		this.elementRef.nativeElement.click(); // 触发数据检测，保证视图已更新
+	}
 
     // ueditor常用API
     /**

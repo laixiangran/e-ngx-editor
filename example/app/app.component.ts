@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import {EssenceNg2EditorComponent} from "../../src/essence-ng2-editor.component";
 
 @Component({
@@ -12,14 +12,13 @@ export class AppComponent {
 
 	model_text: string = '<span style="color: red;">测试文本！</span>';
 
-	constructor (public changeDetectorRef: ChangeDetectorRef) {
+	constructor () {
 	}
 
 	ngOnInit () {
 	}
 
 	contentChange ($event) {
-		this.changeDetectorRef.detectChanges(); // 手动触发一次
 		console.log("contentChange：", $event);
 	}
 
