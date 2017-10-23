@@ -1,11 +1,14 @@
 <div class="app_main">
 	<h1>editor Component for Angular2</h1>
 	<div>
-		<essence-ng2-editor #editor id="editor" [(ngModel)]="model_text"
-							(contentChange)="contentChange($event)"
-							(ready)="editorReady($event)"
-							(click)="test(editor.text)">
-		</essence-ng2-editor>
+		<form role="form" #form="ngForm">
+			<essence-ng2-editor name="model_text" [(ngModel)]="model_text"
+			                    #editor="ngModel"
+								(contentChange)="contentChange($event)"
+								(ready)="editorReady($event)"
+								required>
+			</essence-ng2-editor>
+		</form>
 	</div>
 	<h2>常用API</h2>
 	<div>

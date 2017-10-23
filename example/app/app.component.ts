@@ -1,4 +1,4 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
 import {EssenceNg2EditorComponent} from "../../src/essence-ng2-editor.component";
 
 @Component({
@@ -8,17 +8,18 @@ import {EssenceNg2EditorComponent} from "../../src/essence-ng2-editor.component"
 })
 export class AppComponent {
 
-	@ViewChild('editor') editor: EssenceNg2EditorComponent;
+	@ViewChild(EssenceNg2EditorComponent) editor: EssenceNg2EditorComponent;
 
-	model_text: string = '<p style="font-weight: bold;"><a href="http://ueditor.baidu.com/website/index.html" target="_blank" title="去UEditor官网">UEditor Component for Angular2</a></p>';
+	model_text: string = '<span style="color: red;">测试文本！</span>';
 
-	constructor () {
+	constructor (public changeDetectorRef: ChangeDetectorRef) {
 	}
 
 	ngOnInit () {
 	}
 
 	contentChange ($event) {
+		this.changeDetectorRef.detectChanges(); // 手动触发一次
 		console.log("contentChange：", $event);
 	}
 
@@ -31,10 +32,6 @@ export class AppComponent {
 	}
 
 	setContent (): void {
-		this.editor.setContent('<p style="font-weight: bold;"><a href="http://ueditor.baidu.com/website/index.html" target="_blank" title="去UEditor官网">UEditor Component for Angular2 (已修改)</a></p>');
-	}
-
-	test (text: string): void {
-		console.log(text);
+		this.model_text = '<p style="font-weight: bold;"><a href="http://ueditor.baidu.com/website/index.html" target="_blank" title="去UEditor官网">UEditor Component for Angular2 (已修改)</a></p>';
 	}
 }

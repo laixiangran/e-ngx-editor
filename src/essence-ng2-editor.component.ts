@@ -1,22 +1,27 @@
-import { Component, OnInit, OnDestroy, ElementRef, Self, Input, Output, EventEmitter } from '@angular/core';
-import { ControlValueAccessor, NgModel } from "@angular/forms";
+import { Component, OnInit, OnDestroy, ElementRef, Input, Output, EventEmitter, forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import * as _ from "lodash";
 
-declare var UE: any;
+declare let UE: any;
+
+export const EDITOR_VALUE_ACCESSOR: any = {
+	provide: NG_VALUE_ACCESSOR,
+	useExisting: forwardRef(() => EssenceNg2EditorComponent),
+	multi: true
+};
 
 @Component({
-    selector: 'essence-ng2-editor[ngModel]',
+    selector: 'essence-ng2-editor',
     templateUrl: './essence-ng2-editor.component.html',
     styleUrls: ['./essence-ng2-editor.component.scss'],
-    providers: [NgModel]
+    providers: [EDITOR_VALUE_ACCESSOR]
 })
 export class EssenceNg2EditorComponent implements ControlValueAccessor, OnInit, OnDestroy {
-    ue: any = null;
-    text: string;
-    cd: NgModel;
+    editor_text: string = '';
     elementRef: ElementRef;
     config: any;
-
+    isReady: boolean = false;
+	editorChange: any = (_: any) => {};
     defaultConfig: any = {
         autoHeightEnabled: true,
         allowDivTransToP: false,
@@ -25,7 +30,7 @@ export class EssenceNg2EditorComponent implements ControlValueAccessor, OnInit, 
             ['bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc']
         ]
     };
-
+	ue: any = null;
     Editor: any = UE.Editor;
     EventBase: any = UE.EventBase;
     uNode: any = UE.uNode;
@@ -44,6 +49,17 @@ export class EssenceNg2EditorComponent implements ControlValueAccessor, OnInit, 
     get option(): any {
         return this.config;
     }
+
+	get text() {
+		return this.editor_text;
+	}
+
+	set text(value: string) {
+		this.editor_text = value;
+		if (this.isReady) {
+			this.setContent(value);
+		}
+	}
 
     // 编辑器准备就绪后会触发该事件
     @Output()
@@ -114,9 +130,7 @@ export class EssenceNg2EditorComponent implements ControlValueAccessor, OnInit, 
     @Output()
     contentChange: EventEmitter<any> = new EventEmitter<any>(false);
 
-    constructor(@Self() cd: NgModel, elementRef: ElementRef) {
-        this.cd = cd;
-        cd.valueAccessor = this;
+    constructor(elementRef: ElementRef) {
         this.elementRef = elementRef;
     }
 
@@ -125,13 +139,13 @@ export class EssenceNg2EditorComponent implements ControlValueAccessor, OnInit, 
             this.elementRef.nativeElement.id = new Date().getTime().toString();
             console.warn("编辑器容器最好设置id！");
         }
-        this.text = this.cd.value;
         let con: any = _.merge({}, this.defaultConfig, this.config);
         this.ue = UE.getEditor(this.elementRef.nativeElement.id, con);
 
         // 注册事件
         this.ue.addListener('ready', (editor: any) => {
-            this.setContent(this.text);
+        	this.isReady = true;
+            this.setContent(this.editor_text);
             this.ready.emit(this);
             this.focus();
         });
@@ -181,11 +195,13 @@ export class EssenceNg2EditorComponent implements ControlValueAccessor, OnInit, 
         });
 
         this.ue.addListener('afterSetContent', (editor: any) => {
-            this.afterSetContent.emit(this);
+			this.afterSetContent.emit(this);
         });
 
         this.ue.addListener('selectionchange', (editor: any) => {
-            this.selectionchange.emit(this);
+			this.editor_text = this.getContent();
+			this.editorChange(this.editor_text);
+			this.selectionchange.emit(this);
         });
 
         this.ue.addListener('beforeSelectionChange', (editor: any) => {
@@ -197,9 +213,9 @@ export class EssenceNg2EditorComponent implements ControlValueAccessor, OnInit, 
         });
 
         this.ue.addListener('contentChange', () => {
-            this.writeValue(this.getContent());
-            this.cd.viewToModelUpdate(this.getContent());
-            this.contentChange.emit(this.getContent());
+			this.editor_text = this.getContent();
+			this.editorChange(this.editor_text);
+			this.contentChange.emit(this.editor_text);
         });
     }
 
@@ -313,8 +329,8 @@ export class EssenceNg2EditorComponent implements ControlValueAccessor, OnInit, 
 
     /**
      * 执行指定命令
-     * @param command
-     * @param content
+     * @param command 命令
+     * @param content 内容
      */
     executeCommand(command: string, content?: string): void {
         if (content) {
@@ -324,15 +340,17 @@ export class EssenceNg2EditorComponent implements ControlValueAccessor, OnInit, 
         }
     }
 
-
     // 以下实现ControlValueAccessor接口的方法
     writeValue(value: string): void {
-        this.text = value;
+    	if (value) {
+			this.text = value;
+		}
     }
 
-    registerOnChange(fn: any): void {
-    }
+	registerOnChange(fn: any): void {
+		this.editorChange = fn;
+	}
 
-    registerOnTouched(fn: any): void {
-    }
+	registerOnTouched(fn: any): void {
+	}
 }
