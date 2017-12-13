@@ -1,6 +1,6 @@
-# essence-ng2-editor
+# e-ngx-editor
 
-essence-ng2-editor is a editor component for Angular.
+基于Angular的富文本编辑组件，依赖第三方插件：UEditor。
 
 依赖的第三方插件：[UEditor](http://ueditor.baidu.com/website/index.html)
 
@@ -9,7 +9,7 @@ essence-ng2-editor is a editor component for Angular.
 1. Install
 
 	```shell
-	npm install --save essence-ng2-editor@latest
+	npm install --save e-ngx-editor@latest
 	```
 	
 2. 在index.html引入UEditor
@@ -20,13 +20,13 @@ essence-ng2-editor is a editor component for Angular.
 	<script src="./assets/scripts/ueditor/lang/zh-cn/zh-cn.js"></script>
 	```
 
-3. Add the EssenceNg2EditorModule
+3. Add the ENgxEditorModule
 
 	```typescript
-	import {EssenceNg2EditorModule} from "essence-ng2-editor";
+	import {ENgxEditorModule} from "e-ngx-editor";
 	@NgModule({
 	    imports: [
-	        EssenceNg2EditorModule
+	        ENgxEditorModule
 	    ]
 	})
 	```
@@ -34,11 +34,11 @@ essence-ng2-editor is a editor component for Angular.
 4. Use in the template
 
 	```html
-	<essence-ng2-editor #editor id="editor" [(ngModel)]="model_text"
+	<e-ngx-editor #editor id="editor" [(ngModel)]="model_text"
                         (contentChange)="contentChange($event)"
                         (ready)="editorReady($event)"
                         (click)="test(editor.text)">
-    </essence-ng2-editor>
+    </e-ngx-editor>
 	```
 
 5. Use in the component

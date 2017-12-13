@@ -1,13 +1,13 @@
 <div class="app_main">
-	<h1>editor Component for Angular2</h1>
+	<h1>editor Component for Angular</h1>
 	<div>
 		<form role="form" #form="ngForm">
-			<essence-ng2-editor name="model_text" [(ngModel)]="model_text"
+			<e-ngx-editor name="model_text" [(ngModel)]="model_text"
 			                    #editor="ngModel"
 								(contentChange)="contentChange($event)"
 								(ready)="editorReady($event)"
 								required>
-			</essence-ng2-editor>
+			</e-ngx-editor>
 		</form>
 		<p>
 			model_text：{{model_text}}

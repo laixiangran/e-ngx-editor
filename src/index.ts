@@ -3,5 +3,5 @@
  * homepage：http://www.laixiangran.cn
  */
 
-export {EssenceNg2EditorModule} from './essence-ng2-editor.module';
-export {EssenceNg2EditorComponent} from './essence-ng2-editor.component'
+export { ENgxEditorModule } from './e-ngx-editor.module';
+export { ENgxEditorComponent } from './e-ngx-editor.component'

@@ -1,16 +1,16 @@
 {
-	"name": "essence-ng2-editor",
-	"version": "1.0.6",
-	"description": "essence-ng2-editor is a editor component for Angular.",
+	"name": "e-ngx-editor",
+	"version": "1.2.0",
+	"description": "基于Angular的富文本编辑组件，依赖第三方插件：UEditor",
 	"keywords": [
-		"angular2",
+		"angular",
 		"UEditor",
 		"laixiangran"
 	],
-	"homepage": "https://github.com/laixiangran/essence-ng2-editor#readme",
+	"homepage": "https://github.com/laixiangran/e-ngx-editor#readme",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/laixiangran/essence-ng2-editor.git"
+		"url": "https://github.com/laixiangran/e-ngx-editor.git"
 	},
 	"author": {
 		"name": "赖祥燃",
@@ -20,7 +20,7 @@
 	},
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/laixiangran/essence-ng2-editor/issues"
+		"url": "https://github.com/laixiangran/e-ngx-editor/issues"
 	},
 	"scripts": {
 		"release": "gulp prepublish && ngc && npm publish",
