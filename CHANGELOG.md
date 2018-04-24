@@ -1,3 +1,7 @@
+# 5.0.0（2018-04-24）
+
+- 升级angular到5.0.0
+
 # 1.2.0 (2017-12-13)
 
 - 将essence-ng2-editor更名为e-ngx-editor
