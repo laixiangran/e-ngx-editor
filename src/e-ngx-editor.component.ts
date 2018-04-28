@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ElementRef, Input, Output, EventEmitter, forwardRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, Input, Output, EventEmitter, forwardRef, Renderer2, ChangeDetectionStrategy } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import * as _ from 'lodash';
 
@@ -14,21 +14,17 @@ export const EDITOR_VALUE_ACCESSOR: any = {
 	selector: 'e-ngx-editor',
 	templateUrl: './e-ngx-editor.component.html',
 	styleUrls: ['./e-ngx-editor.component.scss'],
-	providers: [EDITOR_VALUE_ACCESSOR]
+	providers: [EDITOR_VALUE_ACCESSOR],
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ENgxEditorComponent implements ControlValueAccessor, OnInit, OnDestroy {
-	editor_text: string = '';
+	editor_text: string;
 	elementRef: ElementRef;
 	config: any;
 	isReady: boolean = false;
 	editorChange: any = (_: any) => {};
 	defaultConfig: any = {
-		autoHeightEnabled: true,
-		allowDivTransToP: false,
-		toolbars: [
-			['fullscreen', 'source', 'undo', 'redo'],
-			['bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc']
-		]
+		autoHeightEnabled: false
 	};
 	ue: any = null;
 	Editor: any = UE.Editor;
@@ -132,16 +128,12 @@ export class ENgxEditorComponent implements ControlValueAccessor, OnInit, OnDest
 
 	constructor(elementRef: ElementRef, render: Renderer2) {
 		this.elementRef = elementRef;
-		render.listen(this.elementRef.nativeElement, 'click', () => {});
+		render.listen(this.elementRef.nativeElement, 'click', () => {}); // 当数据变化时通过调用click事件触发数据检测，保证视图已更新
 	}
 
 	ngOnInit() {
-		if (!this.elementRef.nativeElement.id) {
-			this.elementRef.nativeElement.id = new Date().getTime().toString();
-			console.warn('编辑器容器最好设置id！');
-		}
 		let con: any = _.merge({}, this.defaultConfig, this.config);
-		this.ue = UE.getEditor(this.elementRef.nativeElement.id, con);
+		this.ue = UE.getEditor(this.elementRef.nativeElement, con);
 
 		// 注册事件
 		this.ue.addListener('ready', (editor: any) => {

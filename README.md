@@ -1,8 +1,6 @@
 # e-ngx-editor
 
-基于Angular的富文本编辑组件，依赖第三方插件：UEditor。
-
-依赖的第三方插件：[UEditor](http://ueditor.baidu.com/website/index.html)
+基于Angular的富文本编辑组件，依赖第三方插件：[neditor](https://github.com/notadd/neditor)（neditor 基于 [UEditor](http://fex.baidu.com/ueditor/)）
 
 ## Usage
 
@@ -12,12 +10,12 @@
 	npm install --save e-ngx-editor@latest
 	```
 	
-2. 在index.html引入UEditor
+2. 在index.html引入neditor [下载安装包](https://github.com/notadd/neditor#%E5%AE%8C%E6%95%B4%E5%AE%89%E8%A3%85%E5%8C%85-%E6%97%A0%E9%9C%80%E7%BC%96%E8%AF%91)
 
 	```html
-	<script src="./assets/scripts/ueditor/ueditor.config.js"></script>
-	<script src="./assets/scripts/ueditor/ueditor.all.min.js"></script>
-	<script src="./assets/scripts/ueditor/lang/zh-cn/zh-cn.js"></script>
+    <script src="./assets/scripts/neditor/neditor.config.js"></script>
+    <script src="./assets/scripts/neditor/neditor.all.min.js"></script>
+    <script src="./assets/scripts/neditor/i18n/zh-cn/zh-cn.js"></script>
 	```
 
 3. Add the ENgxEditorModule
@@ -34,7 +32,7 @@
 4. Use in the template
 
 	```html
-	<e-ngx-editor #editor id="editor" [(ngModel)]="model_text"
+	<e-ngx-editor #editor [(ngModel)]="model_text"
                         (contentChange)="contentChange($event)"
                         (ready)="editorReady($event)"
                         (click)="test(editor.text)">
@@ -64,15 +62,10 @@
 ### Inputs
 
 - `[(ngModel)]`（`string`） - 绑定编辑器内容
-- `ueOption`（`?Object`） - 属性参数（[参照官网API](http://ueditor.baidu.com/doc/)），默认defaultConfig如下：
+- `ueOption`（`?Object`） - 属性参数（[参照官网配置](http://fex.baidu.com/ueditor/#start-config)），默认defaultConfig如下：
 ```typescript
     defaultConfig: any = {
-        autoHeightEnabled: true,
-        allowDivTransToP: false,
-        toolbars: [
-            ['fullscreen', 'source', 'undo', 'redo'],
-            ['bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc']
-        ]
+        autoHeightEnabled: false
     };
 ```
 
