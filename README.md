@@ -2,6 +2,8 @@
 
 基于Angular的富文本编辑组件，依赖第三方插件：[neditor](https://github.com/notadd/neditor)（neditor 基于 [UEditor](http://fex.baidu.com/ueditor/)）
 
+需要使用后台相关的功能（如上传图片、视频等等）请部署对应的后端，[后端部署说明](http://fex.baidu.com/ueditor/#server-deploy)
+
 ## Usage
 
 1. Install
