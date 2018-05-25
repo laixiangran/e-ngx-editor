@@ -132,8 +132,11 @@ export class ENgxEditorComponent implements ControlValueAccessor, OnInit, OnDest
 	}
 
 	ngOnInit() {
+		if (!this.elementRef.nativeElement.id) {
+			this.elementRef.nativeElement.id = new Date().getTime().toString();
+		}
 		let con: any = _.merge({}, this.defaultConfig, this.config);
-		this.ue = UE.getEditor(this.elementRef.nativeElement, con);
+		this.ue = UE.getEditor(this.elementRef.nativeElement.id, con);
 
 		// 注册事件
 		this.ue.addListener('ready', (editor: any) => {

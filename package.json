@@ -1,6 +1,6 @@
 {
 	"name": "e-ngx-editor",
-	"version": "5.1.0",
+	"version": "5.1.1",
 	"description": "基于Angular的富文本编辑组件，依赖第三方插件：neditor（neditor 基于 UEditor）",
 	"keywords": [
 		"angular",
